@@ -1,0 +1,318 @@
+{
+  "uuid": "8dcf2f9d-dbda-4cb1-b9e7-dcb560da0fb1",
+  "concept": {
+    "name": "11",
+    "description": "11"
+  },
+  "race": {
+    "uuid": "",
+    "name": "",
+    "name_en": "",
+    "features": []
+  },
+  "characteristics": {
+    "сила": {
+      "name_en": "strength",
+      "value": "d4",
+      "base_value": "d4",
+      "race_modifier": "",
+      "points_spent": 0
+    },
+    "ловкость": {
+      "name_en": "agility",
+      "value": "d4",
+      "base_value": "d4",
+      "race_modifier": "",
+      "points_spent": 0
+    },
+    "выносливость": {
+      "name_en": "vigor",
+      "value": "d6",
+      "base_value": "d6",
+      "race_modifier": "",
+      "points_spent": 1
+    },
+    "смекалка": {
+      "name_en": "smarts",
+      "value": "d4",
+      "base_value": "d4",
+      "race_modifier": "",
+      "points_spent": 0
+    },
+    "характер": {
+      "name_en": "spirit",
+      "value": "d4",
+      "base_value": "d4",
+      "race_modifier": "",
+      "points_spent": 0
+    },
+    "total_points_available": 5,
+    "total_points_spent": 1
+  },
+  "skills": [
+    {
+      "uuid": "660e8400-e29b-41d4-a716-446655440001",
+      "name": "АТЛЕТИКА",
+      "name_en": "ATHLETICS",
+      "value": "d8",
+      "base_value": "d8",
+      "points_spent": 4,
+      "is_base": true,
+      "from_race": false
+    },
+    {
+      "uuid": "660e8400-e29b-41d4-a716-446655440002",
+      "name": "ОСВЕДОМЛЕННОСТЬ",
+      "name_en": "AWARENESS",
+      "value": "d6",
+      "base_value": "d6",
+      "points_spent": 2,
+      "is_base": true,
+      "from_race": false
+    },
+    {
+      "uuid": "660e8400-e29b-41d4-a716-446655440003",
+      "name": "ВНИМАНИЕ",
+      "name_en": "NOTICE",
+      "value": "d4",
+      "base_value": "d4",
+      "points_spent": 0,
+      "is_base": true,
+      "from_race": false
+    },
+    {
+      "uuid": "660e8400-e29b-41d4-a716-446655440004",
+      "name": "УБЕЖДЕНИЕ",
+      "name_en": "PERSUASION",
+      "value": "d4",
+      "base_value": "d4",
+      "points_spent": 0,
+      "is_base": true,
+      "from_race": false
+    },
+    {
+      "uuid": "660e8400-e29b-41d4-a716-446655440005",
+      "name": "СКРЫТНОСТЬ",
+      "name_en": "STEALTH",
+      "value": "d4",
+      "base_value": "d4",
+      "points_spent": 0,
+      "is_base": true,
+      "from_race": false
+    },
+    {
+      "uuid": "660e8400-e29b-41d4-a716-446655440016",
+      "name": "ДРАКА",
+      "name_en": "FIGHTING",
+      "value": "d10",
+      "base_value": "d10",
+      "points_spent": 6,
+      "is_base": false,
+      "from_race": false
+    }
+  ],
+  "starting_flaws": [],
+  "starting_traits": [],
+  "experience": {
+    "total": 100,
+    "spent": 16,
+    "available": 84
+  },
+  "advancements": [
+    {
+      "experience_cost": 4,
+      "type": "attribute",
+      "description": "Характеристика Выносливость: d4 → d6",
+      "applied": true
+    },
+    {
+      "experience_cost": 4,
+      "type": "skill_one",
+      "description": "Навык \"ОСВЕДОМЛЕННОСТЬ\": d4 → d6",
+      "applied": true
+    },
+    {
+      "experience_cost": 4,
+      "type": "skill_one",
+      "description": "Навык \"АТЛЕТИКА\": d4 → d6",
+      "applied": true
+    },
+    {
+      "experience_cost": 4,
+      "type": "skill_one",
+      "description": "Навык \"АТЛЕТИКА\": d6 → d8",
+      "applied": true
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    },
+    {
+      "experience_cost": 4,
+      "type": "",
+      "description": "",
+      "applied": false
+    }
+  ],
+  "derived_statistics": {
+    "стандартный_шаг": {
+      "name_en": "standard_pace",
+      "base": 6,
+      "race_modifier": 0,
+      "modifiers": 0,
+      "total": 6
+    },
+    "бег": {
+      "name_en": "run",
+      "base": "d6",
+      "race_modifier": 0,
+      "modifiers": 0,
+      "total": "d6"
+    },
+    "защита": {
+      "name_en": "parry",
+      "base": 7,
+      "race_modifier": 0,
+      "modifiers": 0,
+      "total": 7
+    },
+    "стойкость": {
+      "name_en": "toughness",
+      "base": 5,
+      "race_modifier": 0,
+      "armor": 0,
+      "modifiers": 0,
+      "total": 5
+    }
+  },
+  "equipment": {
+    "money": 500,
+    "items": []
+  },
+  "notes": {
+    "flaw_points_earned": 0,
+    "flaw_points_spent": 0,
+    "flaw_points_available": 0,
+    "skill_points_used": 12,
+    "skill_points_available": 12,
+    "characteristic_points_used": 0,
+    "characteristic_points_available": 5
+  },
+  "flaw_points_spending": []
+}
