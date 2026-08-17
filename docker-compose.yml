@@ -1,19 +1,37 @@
-version: '3.8'
-
 services:
-  sw-gen:
-    build: .
-    container_name: savage-worlds-generator
-    ports:
-      - "5000:5000"
-    volumes:
-      # Монтируем директорию с персонажами для сохранения данных
-      - ./characters:/app/characters
-      # Монтируем JSON файлы данных (опционально, для возможности редактирования)
-      - ./flaws.json:/app/flaws.json
-      - ./skills.json:/app/skills.json
-      - ./traits.json:/app/traits.json
-      - ./races.json:/app/races.json
-    environment:
-      - FLASK_ENV=production
+  postgres:
+    image: postgres:16-alpine
     restart: unless-stopped
+    environment:
+      POSTGRES_USER: swassist
+      POSTGRES_PASSWORD: swassist
+      POSTGRES_DB: swassist
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U swassist -d swassist"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://swassist:swassist@postgres:5432/swassist?schema=public
+      PORT: 3000
+      FRONTEND_URL: http://localhost:8081
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "8081:80"
+
+volumes:
+  postgres_data:

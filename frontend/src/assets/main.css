@@ -1,0 +1,291 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  [data-theme='dark'] {
+    --wiki-bg: #000000;
+    --wiki-canvas: #111111;
+    --wiki-sidebar: #1a1a1a;
+    --wiki-panel: #1e1e1e;
+    --wiki-panel-hover: #2a2a2a;
+    --wiki-border: #333333;
+    --wiki-border-light: #444444;
+    --wiki-accent: #039be5;
+    --wiki-accent-hover: #0288d1;
+    --wiki-accent-muted: rgba(3, 155, 229, 0.15);
+    --wiki-green: #43a047;
+    --wiki-text: #fafafa;
+    --wiki-muted: #9e9e9e;
+    --wiki-topbar: #000000;
+    --wiki-nav-active: #424242;
+  }
+
+  [data-theme='light'] {
+    --wiki-bg: #fafafa;
+    --wiki-canvas: #ffffff;
+    --wiki-sidebar: #f5f5f5;
+    --wiki-panel: #eeeeee;
+    --wiki-panel-hover: #e0e0e0;
+    --wiki-border: #e0e0e0;
+    --wiki-border-light: #bdbdbd;
+    --wiki-accent: #039be5;
+    --wiki-accent-hover: #0288d1;
+    --wiki-accent-muted: rgba(3, 155, 229, 0.12);
+    --wiki-green: #43a047;
+    --wiki-text: #212121;
+    --wiki-muted: #757575;
+    --wiki-topbar: #ffffff;
+    --wiki-nav-active: #e0e0e0;
+  }
+
+  body {
+    @apply min-h-screen bg-wiki-bg text-wiki-text antialiased;
+  }
+
+  input, textarea, select, button {
+    @apply outline-none;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded px-4 py-2 text-sm font-medium uppercase tracking-wide transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-wiki-accent text-white hover:bg-wiki-accentHover;
+  }
+
+  .btn-secondary {
+    @apply btn border border-wiki-border bg-transparent text-wiki-muted hover:border-wiki-accent hover:text-wiki-text;
+  }
+
+  .btn-ghost {
+    @apply btn normal-case tracking-normal text-wiki-muted hover:bg-wiki-panelHover hover:text-wiki-text;
+  }
+
+  .btn-text {
+    @apply inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-wiki-muted transition-colors hover:text-wiki-accent;
+  }
+
+  .input {
+    @apply w-full rounded border border-wiki-border bg-wiki-panel px-3 py-2 text-sm text-wiki-text placeholder:text-wiki-muted focus:border-wiki-accent;
+  }
+
+  .wiki-search {
+    @apply w-full max-w-md rounded-full border border-wiki-border bg-wiki-panel px-4 py-1.5 text-sm text-wiki-text placeholder:text-wiki-muted focus:border-wiki-accent;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded px-2 py-0.5 text-xs font-medium;
+  }
+
+  /* Header */
+  .wiki-header {
+    @apply flex h-12 shrink-0 items-center gap-4 border-b border-wiki-border bg-wiki-topbar px-4;
+  }
+
+  .wiki-header-brand {
+    @apply flex shrink-0 items-center gap-2 text-sm font-medium text-wiki-text;
+  }
+
+  .wiki-header-center {
+    @apply flex flex-1 justify-center px-4;
+  }
+
+  .wiki-header-actions {
+    @apply flex shrink-0 items-center gap-1;
+  }
+
+  .wiki-icon-btn {
+    @apply flex h-8 w-8 items-center justify-center rounded text-wiki-muted transition-colors hover:bg-wiki-panelHover hover:text-wiki-text;
+  }
+
+  /* Sidebar */
+  .wiki-sidebar {
+    @apply flex w-[220px] shrink-0 flex-col border-r border-wiki-border bg-wiki-sidebar;
+  }
+
+  .wiki-sidebar-home {
+    @apply flex items-center gap-2 border-b border-wiki-border px-3 py-2.5 text-sm text-wiki-muted transition-colors hover:bg-wiki-panelHover hover:text-wiki-text;
+  }
+
+  .wiki-sidebar-label {
+    @apply px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-wiki-muted;
+  }
+
+  .wiki-tree-item {
+    @apply flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px] text-wiki-muted transition-colors hover:bg-wiki-panelHover hover:text-wiki-text;
+  }
+
+  .wiki-tree-item-active {
+    @apply bg-wiki-navActive text-wiki-text;
+  }
+
+  .wiki-tree-folder-active {
+    @apply bg-wiki-accentMuted text-wiki-accent;
+  }
+
+  /* Page layout (Wiki.js page view) */
+  .wiki-page {
+    @apply min-h-full bg-wiki-canvas px-8 py-6;
+  }
+
+  .wiki-page-title {
+    @apply mb-6 text-3xl font-normal text-wiki-text;
+  }
+
+  .wiki-page-title-input {
+    @apply mb-6 w-full border-0 bg-transparent text-3xl font-normal text-wiki-text placeholder:text-wiki-muted focus:outline-none;
+  }
+
+  .wiki-page-columns {
+    @apply flex gap-8;
+  }
+
+  .wiki-page-aside {
+    @apply w-52 shrink-0 space-y-6;
+  }
+
+  .wiki-aside-block {
+    @apply space-y-2;
+  }
+
+  .wiki-aside-title {
+    @apply text-[11px] font-bold uppercase tracking-widest text-wiki-muted;
+  }
+
+  .wiki-aside-link {
+    @apply block py-0.5 text-sm text-wiki-accent hover:underline;
+  }
+
+  .wiki-aside-link-muted {
+    @apply block py-0.5 text-sm text-wiki-muted hover:text-wiki-text;
+  }
+
+  .wiki-page-content {
+    @apply min-w-0 flex-1;
+  }
+
+  .wiki-content-preview {
+    @apply text-[15px] leading-relaxed text-wiki-muted;
+  }
+
+  .wiki-content-preview :where(h1, h2, h3) {
+    @apply mb-3 mt-6 font-normal text-wiki-text first:mt-0;
+  }
+
+  .wiki-content-preview :where(h2) {
+    @apply border-b border-wiki-accent pb-2 text-xl;
+  }
+
+  .wiki-content-preview :where(h3) {
+    @apply text-lg;
+  }
+
+  .wiki-content-preview :where(p) {
+    @apply mb-3;
+  }
+
+  .wiki-content-preview :where(ul, ol) {
+    @apply mb-3 ml-5;
+  }
+
+  .wiki-content-preview :where(ul) {
+    @apply list-disc;
+  }
+
+  .wiki-content-preview :where(a) {
+    @apply text-wiki-accent hover:underline;
+  }
+
+  .wiki-content-preview :where(code) {
+    @apply rounded bg-wiki-panel px-1 font-mono text-sm text-wiki-accent;
+  }
+
+  /* Editor box (comments style) */
+  .wiki-editor-box {
+    @apply overflow-hidden rounded border border-wiki-border bg-wiki-panel;
+  }
+
+  .wiki-editor-area {
+    @apply min-h-[160px] w-full resize-y border-0 bg-wiki-panel px-4 py-3 font-mono text-sm text-wiki-text placeholder:text-wiki-muted focus:outline-none;
+  }
+
+  .wiki-editor-footer {
+    @apply flex items-center justify-between border-t border-wiki-border px-4 py-2;
+  }
+
+  .wiki-tabs {
+    @apply inline-flex overflow-hidden rounded border border-wiki-border text-xs;
+  }
+
+  .wiki-tab {
+    @apply px-3 py-1 text-wiki-muted transition-colors hover:bg-wiki-panelHover;
+  }
+
+  .wiki-tab-active {
+    @apply bg-wiki-accent text-white;
+  }
+
+  /* Settings / dashboard cards */
+  .wiki-block {
+    @apply overflow-hidden rounded border border-wiki-border bg-wiki-panel;
+  }
+
+  .wiki-block-header {
+    @apply px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-white;
+  }
+
+  .wiki-block-header-blue {
+    @apply bg-[#546E7A];
+  }
+
+  .wiki-block-header-accent {
+    @apply bg-wiki-accent;
+  }
+
+  .wiki-block-header-green {
+    @apply bg-wiki-green;
+  }
+
+  .wiki-block-header-dark {
+    @apply bg-[#37474F];
+  }
+
+  .wiki-block-row {
+    @apply flex items-center gap-3 border-b border-wiki-border px-4 py-3 last:border-b-0;
+  }
+
+  .wiki-block-row-label {
+    @apply flex-1 text-sm text-wiki-text;
+  }
+
+  .wiki-empty-state {
+    @apply flex h-full flex-col items-center justify-center p-12 text-center text-wiki-muted;
+  }
+
+  .wiki-draft-banner {
+    border-bottom: 1px solid var(--wiki-accent-muted);
+    background: var(--wiki-accent-muted);
+    @apply px-6 py-2 text-xs text-wiki-accent;
+  }
+
+  .wiki-meta-row {
+    @apply flex flex-wrap gap-1.5 py-1;
+  }
+
+  .wiki-meta-bar {
+    @apply flex flex-wrap items-center gap-2;
+  }
+
+  .card {
+    @apply rounded border border-wiki-border bg-wiki-panel;
+  }
+
+  .wiki-settings-grid {
+    @apply grid gap-6 p-6 md:grid-cols-2;
+  }
+}

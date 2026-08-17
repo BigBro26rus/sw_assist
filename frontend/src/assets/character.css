@@ -1,0 +1,1028 @@
+/* Character creator — unified wiki theme */
+.character-creator-root {
+  font-family: Roboto, system-ui, sans-serif;
+  color: var(--wiki-text);
+}
+
+.character-creator-root *,
+.character-creator-root *::before,
+.character-creator-root *::after {
+  box-sizing: border-box;
+}
+
+.character-creator-root .container {
+  max-width: none;
+  margin: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.character-creator-root .character-creator {
+  padding: 0;
+}
+
+/* Header */
+.character-creator-root header {
+  background: var(--wiki-panel);
+  color: var(--wiki-text);
+  border-bottom: 1px solid var(--wiki-border);
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.character-creator-root header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Sections */
+.character-creator-root .section {
+  margin-bottom: 16px;
+  padding: 16px;
+  background: var(--wiki-panel);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+}
+
+.character-creator-root .section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin: -16px -16px 12px;
+  padding: 10px 12px;
+  background: var(--wiki-sidebar);
+  border-bottom: 1px solid var(--wiki-border);
+  color: var(--wiki-text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.character-creator-root .section-header span {
+  color: var(--wiki-text);
+}
+
+.character-creator-root .section-toggle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--wiki-accent);
+  border: 1px solid var(--wiki-accent);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  transition: background 0.2s;
+}
+
+.character-creator-root .section-toggle:hover {
+  background: var(--wiki-accent-hover);
+}
+
+.character-creator-root .section-toggle.collapsed {
+  transform: rotate(-90deg);
+}
+
+.character-creator-root .section-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 5000px;
+  opacity: 1;
+}
+
+.character-creator-root .section-content.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.character-creator-root .section-description {
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  background: var(--wiki-accent-muted);
+  border-left: 4px solid var(--wiki-accent);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .section-description strong {
+  color: var(--wiki-text);
+}
+
+.character-creator-root .subsection-title,
+.character-creator-root h3 {
+  margin: 24px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--wiki-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .spend-option h3 {
+  margin-top: 0;
+  border: none;
+  color: var(--wiki-muted);
+  font-size: 0.75rem;
+}
+
+/* Forms */
+.character-creator-root .form-group {
+  margin-bottom: 12px;
+}
+
+.character-creator-root .form-group label,
+.character-creator-root label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--wiki-muted);
+}
+
+.character-creator-root .label-spaced {
+  margin-top: 10px;
+}
+
+.character-creator-root input,
+.character-creator-root textarea,
+.character-creator-root select {
+  width: 100%;
+  padding: 8px 10px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+  color: var(--wiki-text);
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
+.character-creator-root input:focus,
+.character-creator-root textarea:focus,
+.character-creator-root select:focus {
+  outline: none;
+  border-color: var(--wiki-accent);
+  box-shadow: 0 0 0 1px var(--wiki-accent);
+}
+
+.character-creator-root .points-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.character-creator-root .points-info span {
+  color: var(--wiki-muted);
+}
+
+.character-creator-root .points-info strong {
+  color: var(--wiki-text);
+}
+
+/* Characteristics & skills */
+.character-creator-root .characteristics-with-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.character-creator-root .char-group {
+  padding: 12px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+}
+
+.character-creator-root .char-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--wiki-border);
+}
+
+.character-creator-root .char-header label {
+  margin: 0;
+  text-transform: none;
+  font-size: 0.9rem;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .char-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.character-creator-root .char-value,
+.character-creator-root .skill-value {
+  min-width: 40px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .btn-char,
+.character-creator-root .btn-skill,
+.character-creator-root .btn-money {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--wiki-panel);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+  color: var(--wiki-text);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.character-creator-root .btn-skill {
+  width: 24px;
+  height: 24px;
+  font-size: 0.85rem;
+}
+
+.character-creator-root .btn-char:hover:not(:disabled),
+.character-creator-root .btn-skill:hover:not(:disabled),
+.character-creator-root .btn-money:hover:not(:disabled) {
+  background: var(--wiki-accent);
+  border-color: var(--wiki-accent);
+  color: #fff;
+}
+
+.character-creator-root .btn-char:disabled,
+.character-creator-root .btn-skill:disabled,
+.character-creator-root .btn-money:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.character-creator-root .skill-item-under-char {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  padding: 6px 8px;
+  background: var(--wiki-sidebar);
+  border: 1px solid var(--wiki-border);
+  border-left: 3px solid var(--wiki-accent);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.character-creator-root .skill-item-under-char .skill-name {
+  flex: 1;
+  font-weight: 500;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .skill-item-under-char .skill-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.character-creator-root .remove-btn,
+.character-creator-root .selected-item-remove,
+.character-creator-root .spent-point-item-remove {
+  background: #c62828;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 2px 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.character-creator-root .remove-btn:hover,
+.character-creator-root .selected-item-remove:hover,
+.character-creator-root .spent-point-item-remove:hover {
+  background: #b71c1c;
+}
+
+/* Derived stats */
+.character-creator-root .derived-statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+}
+
+.character-creator-root .derived-stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-left: 3px solid var(--wiki-accent);
+  border-radius: 4px;
+}
+
+.character-creator-root .derived-stat-item label {
+  margin: 0;
+  text-transform: none;
+  font-size: 0.85rem;
+}
+
+.character-creator-root .derived-value {
+  font-weight: 600;
+  color: var(--wiki-accent);
+}
+
+/* Race */
+.character-creator-root .selected-race-display {
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-left: 3px solid var(--wiki-accent);
+  border-radius: 4px;
+}
+
+.character-creator-root .selected-race-info h3 {
+  margin-top: 0;
+  border: none;
+  font-size: 1rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.character-creator-root .selected-race-info p {
+  color: var(--wiki-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.character-creator-root .race-traits-flaws {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.character-creator-root .race-traits h4,
+.character-creator-root .race-flaws h4 {
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--wiki-border);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--wiki-muted);
+}
+
+.character-creator-root .race-trait-item,
+.character-creator-root .race-flaw-item {
+  margin-bottom: 6px;
+  padding: 8px 10px;
+  background: var(--wiki-sidebar);
+  border: 1px solid var(--wiki-border);
+  border-left: 3px solid var(--wiki-accent);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.character-creator-root .race-trait-item .trait-name,
+.character-creator-root .race-flaw-item .flaw-name {
+  font-weight: 500;
+  color: var(--wiki-text);
+  margin-bottom: 2px;
+}
+
+.character-creator-root .race-trait-item .trait-description,
+.character-creator-root .race-flaw-item .flaw-description {
+  color: var(--wiki-muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+/* Selected items lists */
+.character-creator-root .selected-items-list,
+.character-creator-root .spent-points-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.character-creator-root .selected-item,
+.character-creator-root .spent-point-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-left: 3px solid var(--wiki-accent);
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.character-creator-root .selected-item-name,
+.character-creator-root .spent-point-item-name {
+  font-weight: 500;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .selected-item-details,
+.character-creator-root .spent-point-item-cost {
+  color: var(--wiki-muted);
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+/* Spend flaw points */
+.character-creator-root .spend-points-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.character-creator-root .spend-option {
+  padding: 12px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+}
+
+.character-creator-root .spend-option .btn {
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.character-creator-root .spend-option .btn:last-child {
+  margin-bottom: 0;
+}
+
+/* Buttons */
+.character-creator-root .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  border: 1px solid transparent;
+}
+
+.character-creator-root .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.character-creator-root .btn-primary {
+  background: var(--wiki-accent);
+  border-color: var(--wiki-accent);
+  color: #fff;
+}
+
+.character-creator-root .btn-primary:hover:not(:disabled) {
+  background: var(--wiki-accent-hover);
+  border-color: var(--wiki-accent-hover);
+}
+
+.character-creator-root .btn-secondary {
+  background: transparent;
+  border-color: var(--wiki-border);
+  color: var(--wiki-muted);
+}
+
+.character-creator-root .btn-secondary:hover:not(:disabled) {
+  border-color: var(--wiki-accent);
+  color: var(--wiki-text);
+}
+
+.character-creator-root .btn-danger {
+  background: #c62828;
+  border-color: #c62828;
+  color: #fff;
+}
+
+.character-creator-root .btn-danger:hover:not(:disabled) {
+  background: #b71c1c;
+}
+
+.character-creator-root .btn-flaw-type {
+  padding: 4px 10px;
+  margin: 2px;
+  background: var(--wiki-panel);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+  color: var(--wiki-text);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.character-creator-root .btn-flaw-type:hover {
+  background: var(--wiki-accent);
+  border-color: var(--wiki-accent);
+  color: #fff;
+}
+
+.character-creator-root .btn-flaw-minor {
+  border-left: 3px solid var(--wiki-green);
+}
+
+.character-creator-root .btn-flaw-major {
+  border-left: 3px solid #ef5350;
+}
+
+.character-creator-root .flaw-type-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.character-creator-root .btn-item-edit,
+.character-creator-root .btn-advancement-apply {
+  padding: 6px 12px;
+  background: var(--wiki-accent);
+  border: 1px solid var(--wiki-accent);
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.character-creator-root .btn-item-edit:hover,
+.character-creator-root .btn-advancement-apply:hover:not(:disabled) {
+  background: var(--wiki-accent-hover);
+}
+
+.character-creator-root .btn-item-remove,
+.character-creator-root .btn-advancement-remove {
+  padding: 6px 12px;
+  background: #c62828;
+  border: 1px solid #c62828;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.character-creator-root .btn-item-remove:hover,
+.character-creator-root .btn-advancement-remove:hover {
+  background: #b71c1c;
+}
+
+/* Modals */
+.character-creator-root .modal,
+.character-creator-root .item-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.character-creator-root .modal-content,
+.character-creator-root .item-modal-content {
+  margin: 3% auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 720px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--wiki-panel);
+  border: 1px solid var(--wiki-border);
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  color: var(--wiki-text);
+}
+
+.character-creator-root .item-modal-content {
+  max-width: 500px;
+}
+
+.character-creator-root .modal-content h2,
+.character-creator-root .item-modal-content h2 {
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--wiki-border);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .close {
+  float: right;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--wiki-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.character-creator-root .close:hover {
+  color: var(--wiki-text);
+}
+
+.character-creator-root .modal-content input[type="text"],
+.character-creator-root .modal-filters input,
+.character-creator-root .modal-filters select {
+  margin-bottom: 12px;
+}
+
+.character-creator-root .modal-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.character-creator-root .modal-filters select {
+  flex: 0 0 180px;
+}
+
+.character-creator-root .modal-filters input {
+  flex: 1;
+}
+
+.character-creator-root .modal-list {
+  max-height: 450px;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 8px;
+}
+
+.character-creator-root .modal-item {
+  padding: 12px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.character-creator-root .modal-item:hover {
+  background: var(--wiki-panel-hover);
+  border-color: var(--wiki-accent);
+}
+
+.character-creator-root .modal-item.trait-available {
+  border-left: 3px solid var(--wiki-green);
+}
+
+.character-creator-root .modal-item.trait-unavailable {
+  opacity: 0.55;
+  cursor: not-allowed;
+  border-left: 3px solid #ef5350;
+}
+
+.character-creator-root .modal-item.trait-unavailable:hover {
+  background: var(--wiki-bg);
+}
+
+.character-creator-root .modal-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.character-creator-root .modal-item-name {
+  font-weight: 500;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .modal-item-details {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  background: var(--wiki-accent-muted);
+  color: var(--wiki-accent);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  white-space: nowrap;
+}
+
+.character-creator-root .modal-item-description {
+  color: var(--wiki-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.character-creator-root .traits-section-header {
+  margin: 14px 0 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.character-creator-root .traits-section-header.is-available {
+  color: var(--wiki-green);
+}
+
+.character-creator-root .traits-section-header.is-unavailable {
+  color: #ef5350;
+}
+
+.character-creator-root .trait-requirements-block {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: rgba(239, 83, 80, 0.12);
+  border-left: 3px solid #ef5350;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--wiki-muted);
+}
+
+.character-creator-root .trait-requirements-block ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+.character-creator-root .advancement-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.character-creator-root .advancement-option-btn {
+  text-align: left;
+  white-space: normal;
+  line-height: 1.4;
+}
+
+.character-creator-root .item-modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* Equipment */
+.character-creator-root .equipment-money {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.character-creator-root .money-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.character-creator-root .money-controls input {
+  width: 120px;
+  text-align: center;
+}
+
+.character-creator-root .item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 12px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+}
+
+.character-creator-root .item-name {
+  font-weight: 500;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .item-description {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--wiki-muted);
+  line-height: 1.4;
+}
+
+.character-creator-root .item-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+/* Development */
+.character-creator-root .experience-block,
+.character-creator-root .advancements-block {
+  margin-bottom: 16px;
+  padding: 14px;
+  background: var(--wiki-bg);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+}
+
+.character-creator-root .experience-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.character-creator-root .exp-item label {
+  text-transform: none;
+  font-size: 0.8rem;
+}
+
+.character-creator-root .exp-item span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .rank-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--wiki-accent-muted);
+  border: 1px solid var(--wiki-accent);
+  border-radius: 4px;
+  color: var(--wiki-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.character-creator-root .experience-controls {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--wiki-border);
+}
+
+.character-creator-root .exp-input-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.character-creator-root .exp-input-group input {
+  max-width: 120px;
+}
+
+.character-creator-root .advancement-options-list {
+  margin: 8px 0 12px;
+  padding-left: 20px;
+  color: var(--wiki-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.character-creator-root .advancement-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 12px 14px;
+  background: var(--wiki-sidebar);
+  border: 1px solid var(--wiki-border);
+  border-left: 3px solid var(--wiki-accent);
+  border-radius: 4px;
+}
+
+.character-creator-root .advancement-number {
+  font-weight: 500;
+  color: var(--wiki-text);
+}
+
+.character-creator-root .advancement-status {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.8rem;
+}
+
+.character-creator-root .advancement-status.applied {
+  color: var(--wiki-green);
+}
+
+.character-creator-root .advancement-status.pending {
+  color: #ffb74d;
+}
+
+.character-creator-root .advancement-actions {
+  display: flex;
+  flex-shrink: 0;
+  gap: 6px;
+}
+
+/* Action bar */
+.character-creator-root .action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--wiki-border);
+}
+
+.character-creator-root .is-hidden {
+  display: none !important;
+}
+
+/* Validation */
+.character-creator-root .validation-errors {
+  margin-bottom: 16px;
+  background: #8b1a1a;
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+  color: #fff;
+}
+
+.character-creator-root .validation-errors-content {
+  padding: 12px 16px;
+}
+
+.character-creator-root .validation-errors-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.character-creator-root .validation-errors-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.character-creator-root .validation-errors-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* Tooltip */
+.character-creator-root .tooltip {
+  position: fixed;
+  z-index: 2000;
+  max-width: 320px;
+  padding: 10px 12px;
+  background: var(--wiki-panel);
+  border: 1px solid var(--wiki-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--wiki-text);
+  pointer-events: none;
+}
+
+/* Utility text */
+.character-creator-root .cc-info {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--wiki-accent);
+}
+
+.character-creator-root .cc-warning {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #ef5350;
+}
+
+.character-creator-root .cc-empty {
+  padding: 16px;
+  text-align: center;
+  font-style: italic;
+  color: var(--wiki-muted);
+}
